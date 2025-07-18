@@ -70,7 +70,8 @@
     <div class="question"><a href="merge_arrays.php">4. Merge Two Integer Arrays (Length 3)</a></div>
   </div>
   <footer>
-    Created by the ANIME FAN | | Elite PHP Programmer MD ABU TALEB
+    Created by the ICTian
+    
   </footer>
 </body>
 </html>
