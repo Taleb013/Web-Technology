@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hexadecimal Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validate Hexadecimal Value</h2>
+    <p>Enter a string to check if it’s a valid hex value (digits 0–9 and letters A–F).</p>
+    <input id="hexInput" type="text" placeholder="e.g. 1A3F, ff00cc" />
+    <button onclick="checkHex()">Validate</button>
+    <div class="result" id="hexResult"></div>
+  </div>
+  <script>
+    function isHexValue(s) {
+      return /^[0-9A-Fa-f]+$/.test(s);
+    }
+    function checkHex() {
+      const s = document.getElementById('hexInput').value.trim();
+      document.getElementById('hexResult').textContent =
+        isHexValue(s)
+          ? `✅ "${s}" is a valid hexadecimal value.`
+          : `❌ "${s}" is not a valid hex value.`;
+    }
+  </script>
+</body>
+</html>

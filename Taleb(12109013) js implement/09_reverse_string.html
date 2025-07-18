@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>String Reverser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Reverse a String</h2>
+    <p>Type any text and see it reversed instantly.</p>
+    <input id="origText" type="text" placeholder="Enter text here" />
+    <button onclick="doReverse()">Reverse</button>
+    <div class="result" id="reverseResult"></div>
+  </div>
+  <script>
+    function reverseString(s) {
+      return s.split('').reverse().join('');
+    }
+    function doReverse() {
+      const s = document.getElementById('origText').value;
+      document.getElementById('reverseResult').textContent =
+        `Reversed: ${reverseString(s)}`;
+    }
+  </script>
+</body>
+</html>

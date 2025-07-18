@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Boolean Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validate Boolean Type</h2>
+    <p>Enter any value—this will check whether it’s a Boolean (`true` or `false`).</p>
+    <input id="boolInput" type="text" placeholder="e.g. true, false, 1, 'abc'" />
+    <button onclick="checkBoolean()">Validate</button>
+    <div class="result" id="boolResult"></div>
+  </div>
+  <script>
+    function isBoolean(v) {
+      return typeof v === 'boolean';
+    }
+    function checkBoolean() {
+      let raw = document.getElementById('boolInput').value.trim();
+      let val;
+      if (raw === 'true' || raw === 'false') {
+        val = (raw === 'true');
+      } else {
+        // non-literal input: treat all else as string
+        val = raw;
+      }
+      document.getElementById('boolResult').textContent =
+        isBoolean(val)
+          ? `✅ "${raw}" is a Boolean.`
+          : `❌ "${raw}" is not a Boolean.`;
+    }
+  </script>
+</body>
+</html>

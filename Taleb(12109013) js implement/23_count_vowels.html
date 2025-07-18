@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vowel Counter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Count Vowels in a String</h2>
+    <p>Enter any text to count how many vowels (A, E, I, O, U) it contains.</p>
+    <input id="vowelInput" type="text" placeholder="e.g. Hello World" />
+    <button onclick="showVowelCount()">Count Vowels</button>
+    <div class="result" id="vowelResult"></div>
+  </div>
+  <script>
+    function countVowels(s) {
+      const matches = s.match(/[aeiouAEIOU]/g);
+      return matches ? matches.length : 0;
+    }
+    function showVowelCount() {
+      const s = document.getElementById('vowelInput').value;
+      const cnt = countVowels(s);
+      document.getElementById('vowelResult').textContent =
+        `Number of vowels: ${cnt}`;
+    }
+  </script>
+</body>
+</html>

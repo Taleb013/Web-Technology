@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Null Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validate Null</h2>
+    <p>Enter any value—this will check whether it’s <code>null</code>.</p>
+    <input id="nullInput" type="text" placeholder="e.g. null, '', 0, undefined" />
+    <button onclick="checkNull()">Validate</button>
+    <div class="result" id="nullResult"></div>
+  </div>
+  <script>
+    function isNull(v) {
+      return v === null;
+    }
+    function checkNull() {
+      const raw = document.getElementById('nullInput').value.trim();
+      // Interpret literal "null"
+      const val = raw === 'null' ? null : raw;
+      document.getElementById('nullResult').textContent =
+        isNull(val)
+          ? `✅ Input is null.`
+          : `❌ Input is not null.`;
+    }
+  </script>
+</body>
+</html>

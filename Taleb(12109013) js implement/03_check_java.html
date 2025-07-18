@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Starts with “Java”?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Does it start with “Java”?</h2>
+    <input id="textInput" type="text" placeholder="Enter any string" />
+    <button onclick="checkJava()">Test</button>
+    <div class="result" id="javaResult"></div>
+  </div>
+  <script>
+    function startsWithJava(s) {
+      return s.startsWith('Java');
+    }
+    function checkJava() {
+      const s = document.getElementById('textInput').value;
+      document.getElementById('javaResult').textContent =
+        startsWithJava(s)
+          ? '✅ Yes, it starts with “Java”.'
+          : '❌ No, it does not start with “Java”.';
+    }
+  </script>
+</body>
+</html>

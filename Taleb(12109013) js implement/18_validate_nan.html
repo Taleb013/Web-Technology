@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>NaN Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validate NaN</h2>
+    <p>Enter any value—this will check whether it’s <code>NaN</code> (Not‑a‑Number).</p>
+    <input id="nanInput" type="text" placeholder="e.g. NaN, 123, 'hello'" />
+    <button onclick="checkNaN()">Validate</button>
+    <div class="result" id="nanResult"></div>
+  </div>
+  <script>
+    function isValueNaN(v) {
+      return typeof v === 'number' && isNaN(v);
+    }
+    function checkNaN() {
+      const raw = document.getElementById('nanInput').value.trim();
+      let val = Number(raw);
+      // If raw is not a number literal, treat as string
+      if (raw.toLowerCase() !== 'nan' && !/^\s*-?\d+(\.\d+)?\s*$/.test(raw)) {
+        val = raw;
+      }
+      document.getElementById('nanResult').textContent =
+        isValueNaN(val)
+          ? `✅ "${raw}" is NaN.`
+          : `❌ "${raw}" is not NaN.`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Random Image Display</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Random Image Display</h2>
+    <p>Click the button to show a randomly selected image.</p>
+    <button onclick="displayRandomImage()">Show Image</button>
+    <div id="imgHolder" class="result"></div>
+  </div>
+  <script>
+    const images = [
+      { src: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", width: 240, height: 160 },
+      { src: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", width: 320, height: 195 },
+      { src: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg", width: 500, height: 343 }
+    ];
+    // Preload
+    const buffer = images.map(img => {
+      const i = new Image();
+      i.src = img.src;
+      i.width = img.width;
+      i.height = img.height;
+      return i;
+    });
+    function displayRandomImage() {
+      const randImg = buffer[Math.floor(Math.random() * buffer.length)];
+      const holder = document.getElementById('imgHolder');
+      holder.innerHTML = '';               // clear previous
+      holder.appendChild(randImg.cloneNode());
+    }
+  </script>
+</body>
+</html>

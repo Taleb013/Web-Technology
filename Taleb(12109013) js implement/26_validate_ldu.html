@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Letters/Dashes/Underscores Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validate Letters, Dashes & Underscores</h2>
+    <p>Enter a value—this will check that it contains <strong>only</strong> letters (A–Z, a–z), dashes (<code>-</code>), or underscores (<code>_</code>).</p>
+    <input id="lduInput" type="text" placeholder="e.g. Hello-World_test" />
+    <button onclick="checkLDU()">Validate</button>
+    <div class="result" id="lduResult"></div>
+  </div>
+  <script>
+    function isLettersDashesUnderscores(s) {
+      return /^[A-Za-z_-]+$/.test(s);
+    }
+    function checkLDU() {
+      const s = document.getElementById('lduInput').value.trim();
+      document.getElementById('lduResult').textContent =
+        isLettersDashesUnderscores(s)
+          ? `✅ "${s}" is valid (letters, dashes, underscores only).`
+          : `❌ "${s}" contains invalid characters.`;
+    }
+  </script>
+</body>
+</html>

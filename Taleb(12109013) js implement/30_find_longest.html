@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Longest Word Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Find the Longest Word</h2>
+    <p>Enter any sentence—identifies the single longest word (ignoring punctuation).</p>
+    <input id="longInput" type="text" placeholder="e.g. The quick brown fox." />
+    <button onclick="getLongest()">Find</button>
+    <div class="result" id="longResult"></div>
+  </div>
+  <script>
+    function findLongestWord(s) {
+      const words = s.match(/\b[a-zA-Z0-9']+\b/g) || [];
+      return words.reduce((longest, w) =>
+        w.length > longest.length ? w : longest
+      , '');
+    }
+    function getLongest() {
+      const s = document.getElementById('longInput').value;
+      const longest = findLongestWord(s);
+      document.getElementById('longResult').textContent =
+        longest
+          ? `Longest word: "${longest}"`
+          : 'No words found.';
+    }
+  </script>
+</body>
+</html>
