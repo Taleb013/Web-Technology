@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Highlight Bold on Hover</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Highlight Bold Words</h2>
+    <p>
+      [<a href="#"
+         onmouseover="highlight()"
+         onmouseout="resetHighlight()">
+         Hover here to highlight bold words
+      </a>]
+    </p>
+    <p>
+      <strong>We</strong> have just started <strong>this</strong> section for the users
+      (<strong>beginner</strong> to intermediate) who <strong>want</strong> to work with
+      <strong>various</strong> JavaScript <strong>problems</strong> and write scripts
+      online to <strong>test</strong> their JavaScript <strong>skill</strong>.
+    </p>
+  </div>
+  <script>
+    let boldElems;
+    window.onload = function() {
+      boldElems = document.getElementsByTagName('strong');
+    };
+    function highlight() {
+      for (let el of boldElems) {
+        el.style.color = 'green';
+      }
+    }
+    function resetHighlight() {
+      for (let el of boldElems) {
+        el.style.color = 'black';
+      }
+    }
+  </script>
+</body>
+</html>

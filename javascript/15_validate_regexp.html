@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RegExp Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validate RegExp Object</h2>
+    <p>Enter a pattern literal or constructor call to see if it’s a RegExp object.</p>
+    <input id="regexInput" type="text" placeholder="e.g. /ab+c/, new RegExp('ab+c'), 'abc'" />
+    <button onclick="checkRegExp()">Validate</button>
+    <div class="result" id="regexResult"></div>
+  </div>
+  <script>
+    function isRegExpObject(v) {
+      return Object.prototype.toString.call(v) === '[object RegExp]';
+    }
+    function checkRegExp() {
+      const raw = document.getElementById('regexInput').value.trim();
+      let val;
+      try {
+        // eslint-disable-next-line no-new-func
+        val = new Function(`return (${raw});`)();
+      } catch {
+        val = raw;
+      }
+      document.getElementById('regexResult').textContent =
+        isRegExpObject(val)
+          ? `✅ "${raw}" is a RegExp object.`
+          : `❌ "${raw}" is not a RegExp object.`;
+    }
+  </script>
+</body>
+</html>

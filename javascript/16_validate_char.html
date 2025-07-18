@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Character Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validate Single Character</h2>
+    <p>Enter any value—this will check whether it’s a single character (letter, digit, or symbol).</p>
+    <input id="charInput" type="text" maxlength="2" placeholder="e.g. A, b, 7, #" />
+    <button onclick="checkChar()">Validate</button>
+    <div class="result" id="charResult"></div>
+  </div>
+  <script>
+    function isChar(v) {
+      return typeof v === 'string' && v.length === 1;
+    }
+    function checkChar() {
+      const raw = document.getElementById('charInput').value;
+      document.getElementById('charResult').textContent =
+        isChar(raw)
+          ? `✅ "${raw}" is a single character.`
+          : `❌ Please enter exactly one character.`;
+    }
+  </script>
+</body>
+</html>

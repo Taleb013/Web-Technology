@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Credit Card Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validate Credit Card Number</h2>
+    <p>Enter a credit card number (digits only); this will apply the Luhn algorithm.</p>
+    <input id="cardInput" type="text" maxlength="19" placeholder="e.g. 4532758771091795" />
+    <button onclick="checkCard()">Validate</button>
+    <div class="result" id="cardResult"></div>
+  </div>
+  <script>
+    function isValidCard(numStr) {
+      const arr = numStr.split('').reverse().map(d => +d);
+      const sum = arr.reduce((acc, digit, idx) => {
+        if (idx % 2 === 1) {
+          let dbl = digit * 2;
+          if (dbl > 9) dbl -= 9;
+          return acc + dbl;
+        }
+        return acc + digit;
+      }, 0);
+      return sum % 10 === 0;
+    }
+    function checkCard() {
+      const num = document.getElementById('cardInput').value.trim();
+      if (!/^\d{12,19}$/.test(num)) {
+        document.getElementById('cardResult').textContent =
+          '⚠️ Please enter 12–19 digits only.';
+      } else {
+        const ok = isValidCard(num);
+        document.getElementById('cardResult').textContent =
+          ok
+            ? '✅ Valid credit card number.'
+            : '❌ Invalid credit card number.';
+      }
+    }
+  </script>
+</body>
+</html>

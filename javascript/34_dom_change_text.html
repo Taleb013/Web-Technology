@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>DOM: Change Text Content</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Change Text Content</h2>
+    <p id="content">Original text here.</p>
+    <button onclick="updateText()">Change to “Hello World”</button>
+    <div class="result" id="domResult"></div>
+  </div>
+  <script>
+    function updateText() {
+      const p = document.getElementById('content');
+      p.textContent = 'Hello World';
+      document.getElementById('domResult').textContent =
+        '✅ Text updated.';
+    }
+  </script>
+</body>
+</html>

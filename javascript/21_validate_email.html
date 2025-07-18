@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>E‑Mail Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validate E‑Mail Address</h2>
+    <p>Enter an e‑mail address to check if it’s in a valid format.</p>
+    <input id="emailInput" type="text" placeholder="e.g. user@example.com" />
+    <button onclick="checkEmail()">Validate</button>
+    <div class="result" id="emailResult"></div>
+  </div>
+  <script>
+    function isValidEmail(s) {
+      // Simple RFC‑inspired pattern
+      const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return re.test(s);
+    }
+    function checkEmail() {
+      const s = document.getElementById('emailInput').value.trim();
+      document.getElementById('emailResult').textContent =
+        isValidEmail(s)
+          ? `✅ "${s}" looks like a valid e‑mail address.`
+          : `❌ "${s}" is not a valid e‑mail format.`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Letter Occurrence Counter</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .counts { font-family: monospace; white-space: pre; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Count Letter Occurrences</h2>
+    <p>Enter text to count how many times each letter appears.</p>
+    <textarea id="textInput" rows="4" placeholder="Type something…"></textarea>
+    <button onclick="showCounts()">Count Letters</button>
+    <div class="result counts" id="letterResult"></div>
+  </div>
+  <script>
+    function letterCounts(s) {
+      const counts = {};
+      for (let ch of s.toLowerCase()) {
+        if (/[a-z]/.test(ch)) {
+          counts[ch] = (counts[ch] || 0) + 1;
+        }
+      }
+      return counts;
+    }
+    function showCounts() {
+      const s = document.getElementById('textInput').value;
+      const counts = letterCounts(s);
+      const lines = Object.keys(counts)
+        .sort()
+        .map(letter => `${letter}: ${counts[letter]}`)
+        .join('\n');
+      document.getElementById('letterResult').textContent =
+        lines || 'No letters found.';
+    }
+  </script>
+</body>
+</html>
