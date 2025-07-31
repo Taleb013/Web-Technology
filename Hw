@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <style>
+    label {
+      display: inline-block;
+      width: 100px;
+      margin-top: 8px;
+    }
+    input, select {
+      margin-top: 8px;
+    }
+  </style>
+  <script>
+    function validateForm() {
+      const userId = document.forms["regForm"]["userid"].value;
+      const password = document.forms["regForm"]["password"].value;
+      const name = document.forms["regForm"]["name"].value;
+      const zip = document.forms["regForm"]["zip"].value;
+      const email = document.forms["regForm"]["email"].value;
+      const country = document.forms["regForm"]["country"].value;
+      const gender = document.forms["regForm"]["gender"].value;
+      const languages = document.forms["regForm"]["language"];
+      let languageSelected = false;
+
+      // User ID: length 5 to 12
+      if (!/^\w{5,12}$/.test(userId)) {
+        alert("User ID must be 5 to 12 characters long.");
+        return false;
+      }
+
+      // Password: length 7 to 12
+      if (!/^.{7,12}$/.test(password)) {
+        alert("Password must be 7 to 12 characters long.");
+        return false;
+      }
+
+      // Name: alphabet only
+      if (!/^[A-Za-z\s]+$/.test(name)) {
+        alert("Name must contain only letters.");
+        return false;
+      }
+
+      // ZIP: numeric only
+      if (!/^\d+$/.test(zip)) {
+        alert("ZIP Code must be numeric.");
+        return false;
+      }
+
+      // Email: basic email format
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      // Country: not default
+      if (country === "") {
+        alert("Please select a country.");
+        return false;
+      }
+
+      // Gender: required
+      if (!gender) {
+        alert("Please select your gender.");
+        return false;
+      }
+
+      // Language: at least one selected
+      for (let i = 0; i < languages.length; i++) {
+        if (languages[i].checked) {
+          languageSelected = true;
+          break;
+        }
+      }
+
+      if (!languageSelected) {
+        alert("Please select at least one language.");
+        return false;
+      }
+
+      alert("Form submitted successfully!");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form name="regForm" onsubmit="return validateForm()">
+    <label>User ID:</label>
+    <input type="text" name="userid"><br>
+
+    <label>Password:</label>
+    <input type="password" name="password"><br>
+
+    <label>Name:</label>
+    <input type="text" name="name"><br>
+
+    <label>Address:</label>
+    <input type="text" name="address"><br>
+
+    <label>Country:</label>
+    <select name="country">
+      <option value="">Select Country</option>
+      <option value="India">India</option>
+      <option value="USA">USA</option>
+      <option value="UK">UK</option>
+    </select><br>
+
+    <label>ZIP Code:</label>
+    <input type="text" name="zip"><br>
+
+    <label>Email:</label>
+    <input type="text" name="email"><br>
+
+    <label>Sex:</label>
+    <input type="radio" name="gender" value="Male">Male
+    <input type="radio" name="gender" value="Female">Female<br>
+
+    <label>Language:</label>
+    <input type="checkbox" name="language" value="English">English
+    <input type="checkbox" name="language" value="Non-English">Non-English<br>
+
+    <label>About:</label>
+    <textarea name="about"></textarea><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
